@@ -5,21 +5,20 @@ a = input("Первое: ")
 b = input("Второе: ")
 c = input("Третье: ")
 
-print(a, b, c)
 
 if a > b:
     if a > c:
         if b > c:
-            print(b)
+            print("Среднее число-"+b)
         else:
-            print(c)
+            print("Среднее число-"+c)
     else:
-        print(a)
+        print("Среднее число-"+a)
 else:
     if a > c:
-        print(a)
+        print("Среднее число-"+a)
     else:
         if b > c:
-            print(c)
+            print("Среднее число-"+c)
         else:
-            print(b)
+            print("Среднее число-"+b)
