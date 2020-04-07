@@ -7,5 +7,5 @@ next = 1
 for i in range(0, n):
     sum += next
     next *= -0.5
-    print(next, sum)
+
 print("Сумма чисел ряда равна ", sum)

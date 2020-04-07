@@ -5,8 +5,8 @@
 import random
 
 n = random.randint(0, 101)
-print(n)
-i = 3
+
+i = 10
 
 while i > 0:
     my_n = int(input("Введи число "))
@@ -18,5 +18,5 @@ while i > 0:
     else:
         print("Введенное число меньше")
     i -= 1
-if i == 0:
-    print("Загаданное число - ", n)
+
+print("Загаданное число - ", n)
