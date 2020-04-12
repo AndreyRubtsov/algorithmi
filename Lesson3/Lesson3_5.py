@@ -14,7 +14,7 @@ for spam in array:
     if spam < 0:
         if spam < min_:
             min_ = spam
-print(min_)
+
 max_min = min_
 for spam in array:
     if spam < 0 and spam > max_min:
