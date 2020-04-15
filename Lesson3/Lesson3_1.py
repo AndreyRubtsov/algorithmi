@@ -8,3 +8,8 @@ for j in array2_9:
         if i % j == 0:
             count += 1
     print(f'кратны {j} - {count}')
+
+
+
+for q in range(2, 10):
+    print(99//q)
