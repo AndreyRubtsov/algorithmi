@@ -3,6 +3,7 @@
 # Первый — с помощью алгоритма «Решето Эратосфена».Второй — без использования «Решета Эратосфена».
 import timeit
 import cProfile
+import math
 
 # решето эратосфена
 def eratosphen(n):
@@ -30,51 +31,57 @@ def eratosphen(n):
     del a
     return b
 
-def simple(n):
+
+
+#нахождение количества n простых чисел
+def isSimple(n):
+    i = 2
+    limit = int(math.sqrt(n))
+    j = 0
+    while i <= limit:
+        if n % i == 0:
+            j = 1
+        i += 1
+    return True if j == 0 else False
+
+def simple(nn):
     a = []
-    for k in range(2, n):
-        i = 2
-        j = 0
-        while i ** 2 <= k and j != 1:
-            if k % i == 0:
-                j = 1
-            i += 1
-        if j != 1:
-            a.append(k)
+    n=2
+    while len(a) < nn:
+        if isSimple(n):
+            a.append(n)
+        n += 1
     return a
 
+print(timeit.timeit('simple(50)', number=100, globals=globals())) #0.020608320999599528
+print(timeit.timeit('simple(100)', number=100, globals=globals()))#0.05859610800143855
+print(timeit.timeit('simple(150)', number=100, globals=globals()))#0.11196539000047778
+print(timeit.timeit('simple(200)', number=100, globals=globals()))#0.1835299419999501
+print(timeit.timeit('simple(250)', number=100, globals=globals()))#0.26274313800058735
+cProfile.run('simple(50)')
+      # 228    0.000    0.000    0.000    0.000 Lesson4_2.py:37(isSimple)
+      # 229    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      # 228    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+      #  50    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('simple(100)')
+      # 540    0.001    0.000    0.001    0.000 Lesson4_2.py:37(isSimple)
+      # 541    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      # 540    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+      # 100    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
 
-print(timeit.timeit('eratosphen(200)', number=100, globals=globals()))   # 0.004108042001462309
-print(timeit.timeit('eratosphen(400)', number=100, globals=globals()))   # 0.008882021000317764
-print(timeit.timeit('eratosphen(800)', number=100, globals=globals()))   # 0.019219728997995844
-print(timeit.timeit('eratosphen(1600)', number=100, globals=globals()))  # 0.03777281300062896
-print(timeit.timeit('eratosphen(3200)', number=100, globals=globals()))  # 0.07924962900142418
-print('*' * 50)
-print(timeit.timeit('simple(200)', number=100, globals=globals()))       # 0.017867424998257775
-print(timeit.timeit('simple(400)', number=100, globals=globals()))       # 0.0440833240027132
-print(timeit.timeit('simple(800)', number=100, globals=globals()))       # 0.10396033799770521
-print(timeit.timeit('simple(1600)', number=100, globals=globals()))      # 0.2517929079986061
-print(timeit.timeit('simple(3200)', number=100, globals=globals()))      # 0.6212756520035327
-print('_' * 50)
-
-cProfile.run('eratosphen(10000)') #1    0.003    0.003    0.003    0.003 Lesson4_2.py:8(eratosphen)
-                                  # 1229    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-cProfile.run('eratosphen(20000)') #1    0.006    0.006    0.006    0.006 Lesson4_2.py:8(eratosphen)
-                                  #2262    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-cProfile.run('eratosphen(40000)') #1    0.011    0.011    0.011    0.011 Lesson4_2.py:8(eratosphen)
-                                  # 4203    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-cProfile.run('eratosphen(80000)') #1    0.024    0.024    0.024    0.024 Lesson4_2.py:8(eratosphen)
-                                  #7837    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-cProfile.run('eratosphen(160000)')#1    0.048    0.048    0.049    0.049 Lesson4_2.py:8(eratosphen)
-                                  #14683    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
-print('*' * 50)
-cProfile.run('simple(10000)')   #1    0.029    0.029    0.029    0.029 Lesson4_2.py:33(simple)
-                                #1229    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-cProfile.run('simple(20000)')   #1    0.072    0.072    0.072    0.072 Lesson4_2.py:33(simple)
-                                #2262    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-cProfile.run('simple(40000)')   #1    0.187    0.187    0.187    0.187 Lesson4_2.py:33(simple)
-                                #4203    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-cProfile.run('simple(80000)')   #1    0.481    0.481    0.481    0.481 Lesson4_2.py:33(simple)
-                                #7837    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-cProfile.run('simple(160000)')  #1    1.248    1.248    1.248    1.248 Lesson4_2.py:33(simple)
-                                #14683    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+cProfile.run('simple(150)')
+      # 862    0.001    0.000    0.001    0.000 Lesson4_2.py:37(isSimple)
+      # 863    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      # 862    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+      # 150    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('simple(200)')
+      # 1222    0.002    0.000    0.002    0.000 Lesson4_2.py:37(isSimple)
+      # 1223    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      # 1222    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+      #  200    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('simple(250)')
+      # 1582    0.003    0.000    0.003    0.000 Lesson4_2.py:37(isSimple)
+      # 1583    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      # 1582    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+      #  250    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+# Проверил 2 варианта алгоритма нахождения простых чисел. в первом случае использовалось решето Эратосфена
