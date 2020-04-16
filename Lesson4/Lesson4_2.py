@@ -56,14 +56,25 @@ print(timeit.timeit('simple(800)', number=100, globals=globals()))       # 0.103
 print(timeit.timeit('simple(1600)', number=100, globals=globals()))      # 0.2517929079986061
 print(timeit.timeit('simple(3200)', number=100, globals=globals()))      # 0.6212756520035327
 print('_' * 50)
-cProfile.run('eratosphen(10000)')
-cProfile.run('eratosphen(20000)')
-cProfile.run('eratosphen(40000)')
-cProfile.run('eratosphen(80000)')
-cProfile.run('eratosphen(160000)')
+
+cProfile.run('eratosphen(10000)') #1    0.003    0.003    0.003    0.003 Lesson4_2.py:8(eratosphen)
+                                  # 1229    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('eratosphen(20000)') #1    0.006    0.006    0.006    0.006 Lesson4_2.py:8(eratosphen)
+                                  #2262    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('eratosphen(40000)') #1    0.011    0.011    0.011    0.011 Lesson4_2.py:8(eratosphen)
+                                  # 4203    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('eratosphen(80000)') #1    0.024    0.024    0.024    0.024 Lesson4_2.py:8(eratosphen)
+                                  #7837    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('eratosphen(160000)')#1    0.048    0.048    0.049    0.049 Lesson4_2.py:8(eratosphen)
+                                  #14683    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
 print('*' * 50)
-cProfile.run('simple(10000)')
-cProfile.run('simple(20000)')
-cProfile.run('simple(40000)')
-cProfile.run('simple(80000)')
-cProfile.run('simple(160000)')
+cProfile.run('simple(10000)')   #1    0.029    0.029    0.029    0.029 Lesson4_2.py:33(simple)
+                                #1229    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('simple(20000)')   #1    0.072    0.072    0.072    0.072 Lesson4_2.py:33(simple)
+                                #2262    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('simple(40000)')   #1    0.187    0.187    0.187    0.187 Lesson4_2.py:33(simple)
+                                #4203    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('simple(80000)')   #1    0.481    0.481    0.481    0.481 Lesson4_2.py:33(simple)
+                                #7837    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+cProfile.run('simple(160000)')  #1    1.248    1.248    1.248    1.248 Lesson4_2.py:33(simple)
+                                #14683    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
