@@ -33,7 +33,7 @@ def eratosphen(n):
 
 
 
-#нахождение количества n простых чисел
+#нахождение n-го простого чисел
 def isSimple(n):
     i = 2
     limit = int(math.sqrt(n))
@@ -51,7 +51,8 @@ def simple(nn):
         if isSimple(n):
             a.append(n)
         n += 1
-    return a
+    return a[-1]
+
 
 print(timeit.timeit('simple(50)', number=100, globals=globals())) #0.020608320999599528
 print(timeit.timeit('simple(100)', number=100, globals=globals()))#0.05859610800143855
