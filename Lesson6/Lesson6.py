@@ -35,35 +35,49 @@ def show2(x):
 #########################################
 #########################################
 
-array2_99 = [i for i in range(2, 100)]
-array2_9 = [i for i in range(2, 10)]
+# array2_99 = [i for i in range(2, 100)]
+# array2_9 = [i for i in range(2, 10)]
+# # show2(array2_99)
+#
+# for j in array2_9:
+#     count = 0
+#     for i in array2_99:
+#         if i % j == 0:
+#             count += 1
+#     print(f'кратны {j} - {count}')
 
-show2(array2_9)
+# памяти использовано- 4080 байт. 56 на j,count,  360 на список (2,10),3664 на список (2,100)
 
-for j in array2_9:
+#
+# # print('*' * 150)
+# #
+# array2_99_2 = {i for i in range(2, 100)}
+# array2_9_2 = {i for i in range(2, 10)}
+# # show2(array2_9_2)
+# # show2(array2_99_2)
+# for j in array2_9_2:
+#     count = 0
+#     for i in array2_99_2:
+#         if i % j == 0:
+#             count += 1
+#     print(f'кратны {j} - {count}')
+
+# памяти использовано- 12192 байт. 56 на j,count,  968 на список (2,10),11168 на список (2,100)
+
+
+array2_99_3 = tuple(i for i in range(2, 100))
+array2_9_3 = tuple(i for i in range(2, 10))
+show2(array2_9_3)
+# show2(array2_99_3)
+for j in array2_9_3:
     count = 0
-    for i in array2_99:
+    for i in array2_99_3:
         if i % j == 0:
             count += 1
     print(f'кратны {j} - {count}')
+# памяти использовано- 3984 байт. 56 на j,count,  344 на список (2,10),3584 на список (2,100)
 
-#########################################
-#########################################
-print('*' * 150)
-
-array2_99_2 = (i for i in range(2, 100))
-array2_9_2 = (i for i in range(2, 10))
-show2(array2_9_2)
-for j in array2_9_2:
-    count = 0
-    for i in array2_99_2:
-        if i % j == 0:
-            count += 1
-    print(f'кратны {j} - {count}')
-
-# #########################################
-#########################################
-print('*' * 150)
-
-for q in range(2, 10):
-    print(99 // q)
+# Ubuntu 18.04.4  x86_64 Python 3.8.2
+# Вывод. Задача по нахождению натуральных чисел от 2 до 99 была решена 3 способами.  Список, словарь, кортеж.
+# Словарь оказался самый пожирающий память способ инициализации переменных. Список и кортеж показали примерно похожие
+# результаты, но кортеж чуть поменьше съел памяти.
