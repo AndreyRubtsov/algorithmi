@@ -26,5 +26,5 @@ def mediana(array):
 var_m = int(input('Input m:'))
 my_array = [random.randint(-100, 99) for i in range(2 * var_m + 1)]
 print(my_array)
-print('Медиана массива - ',mediana(my_array))
+print('Медиана массива - ', mediana(my_array))
 print("Для проверки:\n", sorted(my_array))
