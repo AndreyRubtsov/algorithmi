@@ -5,6 +5,26 @@
 # сортировки, который не рассматривался на уроках (сортировка слиянием также недопустима).
 import random
 
-var_m=int(input('Input m:'))
-my_array = [random.randint(-100, 99) for i in range(2*var_m+1)]
+
+def mediana(array):
+    result = 0
+
+    for i in array:
+        gt = 0
+        lt = 0
+        for j in range(len(array)):
+            if i > array[j]:
+                gt += 1
+            elif i < array[j]:
+                lt += 1
+            # print(i,gt,lt)
+        if gt == lt:
+            result = i
+    return result
+
+
+var_m = int(input('Input m:'))
+my_array = [random.randint(-100, 99) for i in range(2 * var_m + 1)]
 print(my_array)
+print('Медиана массива - ',mediana(my_array))
+print("Для проверки:\n", sorted(my_array))
