@@ -12,14 +12,18 @@ def mediana(array):
     for i in array:
         gt = 0
         lt = 0
+        flag=-1
         for j in range(len(array)):
             if i > array[j]:
                 gt += 1
             elif i < array[j]:
                 lt += 1
-            # print(i,gt,lt)
-        if gt == lt:
+            elif i==array[j]:
+                flag+=1
+            print(i,gt,lt,flag)
+        if gt == lt or flag:
             result = i
+
     return result
 
 

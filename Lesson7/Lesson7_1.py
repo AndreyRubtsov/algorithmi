@@ -20,7 +20,7 @@ def stone_sort(array):
         print(array)
 
 
-my_array = [random.randrange(-100, 99) for i in range(10)]
+my_array = [random.randrange(-100, 100) for i in range(10)]
 print(my_array)
 stone_sort(my_array)
 print(my_array)
